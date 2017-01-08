@@ -3,16 +3,16 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="net.proselyte.hibernate.mappings.set.Developer" table="HIBERNATE_DEVELOPERS">
+    <class name="net.proselyte.hibernate.mappings.sortedset.Developer" table="HIBERNATE_DEVELOPERS">
         <meta attribute="class-description">
             This class contains developer's details.
         </meta>
         <id name="id" type="int" column="ID">
             <generator class="native"/>
         </id>
-        <set name="projects" cascade="all">
+        <set name="projects" cascade="all" sort="net.proselyte.hibernate.mappings.sortedset.ProjectsComparator">
             <key column="DEVELOPER_ID"/>
-            <one-to-many class="net.proselyte.hibernate.mappings.set.Project"/>
+            <one-to-many class="net.proselyte.hibernate.mappings.sortedset.Project"/>
         </set>
         <property name="firstName" column="FIRST_NAME" type="string"/>
         <property name="lastName" column="LAST_NAME" type="string"/>
@@ -20,7 +20,7 @@
         <property name="experience" column="EXPERIENCE" type="int"/>
     </class>
 
-    <class name="net.proselyte.hibernate.mappings.set.Project" table="HIBERNATE_PROJECTS">
+    <class name="net.proselyte.hibernate.mappings.sortedset.Project" table="HIBERNATE_PROJECTS">
         <meta attribute="class description">
             This class contains project's records.
         </meta>
