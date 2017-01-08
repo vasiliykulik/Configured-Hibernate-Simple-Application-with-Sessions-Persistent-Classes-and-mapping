@@ -37,7 +37,7 @@ public class DeveloperRunner {
         /**
          * Update and Remove developers
          */
-        developerRunner.updateDeveloper(6, 3);
+        developerRunner.updateDeveloper(2, 3);
         developerRunner.removeDeveloper(1);
 
         System.out.println("Final list of developers");
