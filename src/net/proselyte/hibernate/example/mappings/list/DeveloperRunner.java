@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by Raketa on 08.01.2017.
  */
+/*Связывается (mapped) с помощью элемента <list> и инициализируется с помощью java.util.ArrayList*/
 public class DeveloperRunner {
   private static SessionFactory sessionFactory;
 
