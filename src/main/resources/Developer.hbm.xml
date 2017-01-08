@@ -3,24 +3,24 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="net.proselyte.hibernate.example.mappings.collection.Developer" table="HIBERNATE_DEVELOPERS">
+    <class name="net.proselyte.hibernate.mappings.set.Developer" table="HIBERNATE_DEVELOPERS">
         <meta attribute="class-description">
             This class contains developer's details.
         </meta>
         <id name="id" type="int" column="ID">
             <generator class="native"/>
         </id>
-        <bag name="projects" cascade="all">
+        <set name="projects" cascade="all">
             <key column="DEVELOPER_ID"/>
-            <one-to-many class="net.proselyte.hibernate.example.mappings.collection.Project"/>
-        </bag>
+            <one-to-many class="net.proselyte.hibernate.mappings.set.Project"/>
+        </set>
         <property name="firstName" column="FIRST_NAME" type="string"/>
         <property name="lastName" column="LAST_NAME" type="string"/>
         <property name="specialty" column="SPECIALTY" type="string"/>
         <property name="experience" column="EXPERIENCE" type="int"/>
     </class>
 
-    <class name="net.proselyte.hibernate.example.mappings.collection.Project" table="HIBERNATE_PROJECTS">
+    <class name="net.proselyte.hibernate.mappings.set.Project" table="HIBERNATE_PROJECTS">
         <meta attribute="class description">
             This class contains project's records.
         </meta>

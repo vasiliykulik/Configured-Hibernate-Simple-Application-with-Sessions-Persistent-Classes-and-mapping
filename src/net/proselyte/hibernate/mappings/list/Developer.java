@@ -1,6 +1,6 @@
-package net.proselyte.hibernate.example.mappings.collection;
+package net.proselyte.hibernate.mappings.list;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Raketa on 08.01.2017.
@@ -11,7 +11,7 @@ public class Developer {
   private String lastName;
   private String specialty;
   private int experience;
-  private Collection projects;
+  private List projects;
 
   public Developer() {
   }
@@ -63,11 +63,11 @@ public class Developer {
     this.experience = experience;
   }
 
-  public Collection getProjects() {
+  public List getProjects() {
     return projects;
   }
 
-  public void setProjects(Collection projects) {
+  public void setProjects(List projects) {
     this.projects = projects;
   }
 

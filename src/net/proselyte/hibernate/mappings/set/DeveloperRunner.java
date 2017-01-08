@@ -1,18 +1,14 @@
-package net.proselyte.hibernate.example.mappings.collection;
+package net.proselyte.hibernate.mappings.set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-
-/**
- * Created by Raketa on 08.01.2017.
- */
-/*Связывается (mapped) с помощью элемента <list> и инициализируется с помощью java.util.ArrayList*/
 public class DeveloperRunner {
   private static SessionFactory sessionFactory;
 
@@ -21,27 +17,26 @@ public class DeveloperRunner {
 
     DeveloperRunner developerRunner = new DeveloperRunner();
 
-    System.out.println("Creating the collection of projects.");
-
-    ArrayList projects1 = new ArrayList();
+    System.out.println("Creating the set of projects.");
+    HashSet projects1 = new HashSet();
     projects1.add(new Project("Proselyte Tutorial", "proselyte.net"));
     projects1.add(new Project("SkybleLib", "SkybleSoft"));
 
-    ArrayList projects2 = new ArrayList();
+    HashSet projects2 = new HashSet();
     projects2.add(new Project("Some Project", "Some Company"));
     projects2.add(new Project("One more Project", "One more Company"));
 
     System.out.println("Adding developer's records to the DB");
 
-    Integer developerId1 = developerRunner.addDeveloper("Proselyte", "Developer", "Java Developer", 2, projects1);
-    Integer developerId2 = developerRunner.addDeveloper("Peter", "UI", "UI Developer", 4, projects2);
+    developerRunner.addDeveloper("Proselyte", "Developer", "Java Developer", 2, projects1);
+    developerRunner.addDeveloper("Peter", "UI", "UI Developer", 4, projects2);
 
     System.out.println("List of developers");
     developerRunner.listDevelopers();
 
     System.out.println("===================================");
     System.out.println("Updating Proselyte");
-    developerRunner.updateDeveloper(developerId1, 3);
+    developerRunner.updateDeveloper(12, 3);
 
     System.out.println("Final list of developers");
 
@@ -50,18 +45,16 @@ public class DeveloperRunner {
     sessionFactory.close();
   }
 
-  public Integer addDeveloper(String firstName, String lastName, String specialty, int experience, ArrayList projects) {
+  public void addDeveloper(String firstName, String lastName, String specialty, int experience, Set projects) {
     Session session = sessionFactory.openSession();
     Transaction transaction = null;
-    Integer developerId = null;
 
     transaction = session.beginTransaction();
     Developer developer = new Developer(firstName, lastName, specialty, experience);
     developer.setProjects(projects);
-    developerId = (Integer) session.save(developer);
+    session.save(developer);
     transaction.commit();
     session.close();
-    return developerId;
   }
 
   public void listDevelopers() {
@@ -69,10 +62,10 @@ public class DeveloperRunner {
     Transaction transaction = null;
 
     transaction = session.beginTransaction();
-    Collection <Developer> developers = session.createQuery("FROM Developer").list();
+    List<Developer> developers = session.createQuery("FROM Developer").list();
     for (Developer developer : developers) {
       System.out.println(developer);
-      Collection <Project> projects = developer.getProjects();
+      Set<Project> projects = developer.getProjects();
       for (Project project : projects) {
         System.out.println(project);
       }
@@ -103,5 +96,4 @@ public class DeveloperRunner {
     transaction.commit();
     session.close();
   }
-
 }

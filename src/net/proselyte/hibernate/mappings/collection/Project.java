@@ -1,4 +1,4 @@
-package net.proselyte.hibernate.example.mappings.list;
+package net.proselyte.hibernate.mappings.collection;
 
 /**
  * Created by Raketa on 08.01.2017.

@@ -1,11 +1,14 @@
-package net.proselyte.hibernate.example.mappings.list;
+package net.proselyte.hibernate.mappings.collection;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+
+
 /**
  * Created by Raketa on 08.01.2017.
  */
@@ -18,7 +21,7 @@ public class DeveloperRunner {
 
     DeveloperRunner developerRunner = new DeveloperRunner();
 
-    System.out.println("Creating the set of projects.");
+    System.out.println("Creating the collection of projects.");
 
     ArrayList projects1 = new ArrayList();
     projects1.add(new Project("Proselyte Tutorial", "proselyte.net"));
@@ -66,10 +69,10 @@ public class DeveloperRunner {
     Transaction transaction = null;
 
     transaction = session.beginTransaction();
-    List <Developer> developers = session.createQuery("FROM Developer").list();
+    Collection <Developer> developers = session.createQuery("FROM Developer").list();
     for (Developer developer : developers) {
       System.out.println(developer);
-      List <Project> projects = developer.getProjects();
+      Collection <Project> projects = developer.getProjects();
       for (Project project : projects) {
         System.out.println(project);
       }

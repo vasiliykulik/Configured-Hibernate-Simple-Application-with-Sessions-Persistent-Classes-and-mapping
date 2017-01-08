@@ -1,4 +1,4 @@
-package net.proselyte.hibernate.example.mappings.collection;
+package net.proselyte.hibernate.mappings.set;
 
 /**
  * Created by Raketa on 08.01.2017.
@@ -46,6 +46,29 @@ public class Project {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+  public boolean equals(Object object) {
+    if (object == null) {
+      return false;
+    }
+    if (!this.getClass().equals(object.getClass())) {
+      return false;
+    }
+
+    Project object2 = (Project) object;
+    if ((this.id == object2.getId()) &&
+            (this.projectName == object2.getProjectName()) &&
+            (this.companyName == object2.getCompanyName())) {
+      return true;
+    }
+    return false;
+  }
+
+  public int hasCode() {
+    int code = 0;
+    code = (id + projectName + companyName).hashCode();
+    return code;
   }
 
   @Override
