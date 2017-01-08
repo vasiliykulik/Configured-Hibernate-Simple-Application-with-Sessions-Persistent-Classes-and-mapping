@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2872671206">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="MySQL - proselyte_database@localhost" uuid="af78614f-4ec5-4179-ba64-ce0f5eb745be">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -16,7 +16,7 @@
       </driver-properties>
     </data-source>
     <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="f677fd24-692c-436f-8371-5de00103576f">
-      <driver-ref>ff84ec6c-86f2-4ca5-854d-3205d185a58f</driver-ref>
+      <driver-ref>be8166b0-32e8-48ee-893f-7c7706c0de3e</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml</remarks>
