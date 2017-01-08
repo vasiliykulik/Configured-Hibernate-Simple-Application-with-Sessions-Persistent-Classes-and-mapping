@@ -11,12 +11,9 @@ CREATE TABLE HIBERNATE_DEVELOPERS(
 
 create table HIBERNATE_PROJECTS (
   id INT NOT NULL auto_increment,
+  SPHERE VARCHAR(50) default NULL,
   PROJECT_NAME VARCHAR(50) default NULL,
   COMPANY VARCHAR(50) default NULL,
-  -- List
-  idx INT default NULL,
   DEVELOPER_ID INT default NULL,
   PRIMARY KEY (id)
 );
-
-alter table HIBERNATE_PROJECTS add column SPHERE VARCHAR(50) default NULL;
